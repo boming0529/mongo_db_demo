@@ -4,7 +4,13 @@ services:
   api-server:
     image: api-server
     ports:
-      - "5000:5000"
+      - 5000:5000
+    volumes:
+      - ./server/db:/usr/src/app/db
+      - ./server/models:/usr/src/app/models
+      - ./server/controllers:/usr/src/app/controllers
+      - ./server/routes:/usr/src/app/routes
+      - ./server/index.js:/usr/src/app/index.js
     depends_on:
       - standalone
   standalone:
